@@ -1,25 +1,26 @@
-import logo from './logo.svg';
+import { useEffect } from "react";
+import { signUp } from "./config/firebase";
 import './App.css';
 
-function App() {
+const App = () => {
+  useEffect(() => {
+    signUp("Joe", "joe123@mail.com","1234567").then(() => {
+      console.log("Kayıt tamamlandı!");
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+  }, [] );
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header >
+        <input type="text" placeholder="İsminizi giriniz..." />
+        <input type="text" placeholder="Email adresinizi giriniz... " />
+        <input type="password" placeholder="Şifrenizi giriniz..." />
+        <button>Gönder</button>
       </header>
     </div>
   );
-}
+};
 
 export default App;
